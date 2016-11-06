@@ -18,18 +18,21 @@ def round(num):
 def binSearch(arr, val):
     min = 0
     max = len(arr) - 1
+    numIts = 0
     while True:
         m = round((min + max) / 2)
         if arr[m] < val:
+            numIts += 1
             min = m + 1
         elif arr[m] > val:
+            numIts += 1
             max = m - 1
         else:
-            return m
+            return numIts
 
 words = setUpDict("words.txt")
 
 find = words[int(r.random() * (len(words) - 1))]
-print("The index of the word ", find, " is ", binSearch(words, find))
+print("Found the word ", find, " after ", binSearch(words, find), " iterations")
 
 
