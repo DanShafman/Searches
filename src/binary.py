@@ -28,11 +28,12 @@ def binSearch(arr, val):
             numIts += 1
             max = m - 1
         else:
-            return numIts
+            return [numIts, m]
 
 words = setUpDict("words.txt")
 
 find = words[int(r.random() * (len(words) - 1))]
-print("Found the word ", find, " after ", binSearch(words, find), " iterations")
+results = binSearch(words, find)
+print("Found the word ", find, " after ", results[0], " iterations at index ", results[1])
 
 
