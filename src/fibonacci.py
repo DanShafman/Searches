@@ -42,7 +42,18 @@ def fibSearch(arr, val, fibArr):
 
 words = setUpDict("words.txt")
 fibs = initFibs()
-find = words[int(r.random() * (len(words) - 1))]
-print(find)
-print("Found the word ", find, " after ", fibSearch(words, find, fibs), " iterations")
+x = []
+avg = 0
+for i in range(0, 1000):
+    find = words[int(r.random() * (len(words) - 1))]
+    result = fibSearch(words, find, fibs)
+    print("Found the word ", find, " after ", result, " iterations")
+    x.append(result)
+    
+avg = sum(x) / 1000
+print(avg)
+y = []
+for i in x:
+    y.append(abs(avg - i))
+print(sum(y) / 1000)
 

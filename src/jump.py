@@ -26,7 +26,6 @@ def skipSearch(arr, val):
         while arr[num] >= val:
             numIts += 1
             num -= 1
-        print("Found the word ", val, " after ", numIts, " iterations at index ", num, " (search interval ", i, ")")
     num = round(math.sqrt(len(arr)-1))
     numIts = 0
     while arr[num] < val:
@@ -36,6 +35,17 @@ def skipSearch(arr, val):
         numIts += 1
         num -= 1
     print("Found the word ", val, " after ", numIts, " iterations at index ", num, " (search interval ", math.sqrt(len(arr)), ")")
+    return numIts
 words = setUpDict("words.txt")
-find = words[int(r.random() * (len(words) - 1))]
-skipSearch(words, find)
+
+its = []
+for i in range(0, 100):
+    find = words[int(r.random() * (len(words) - 1))]
+    its.append(skipSearch(words, find))
+avg = sum(its) / 100
+print(avg)
+
+y = []
+for i in its:
+    y.append(abs(avg - i))
+print(sum(y) / 100)

@@ -32,8 +32,17 @@ def binSearch(arr, val):
 
 words = setUpDict("words.txt")
 
-find = words[int(r.random() * (len(words) - 1))]
-results = binSearch(words, find)
-print("Found the word ", find, " after ", results[0], " iterations at index ", results[1])
+its = []
+for i in range(0, 1000):
+    find = words[int(r.random() * (len(words) - 1))]
+    results = binSearch(words, find)
+    print("Found the word ", find, " after ", results[0], " iterations at index ", results[1])
+    its.append(results[0])
 
+avg = sum(its) / 1000
+print(avg)
+sd = []
+for i in its:
+    sd.append(abs(avg - i))
+print(sum(sd) / 1000)
 
